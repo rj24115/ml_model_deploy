@@ -60,19 +60,22 @@ def predict1():
 @flask_app.route('/iris_predict2', methods=['POST'])
 def predict2():
     received = request.get_json()
-    sepal = request.args["Sepal_Length"]
-    print(sepal)
     print(received.values())
     # float_features = [float(x) for x in received]
     # features = [np.array(float_features)]
-    # features = np.array(list(received.values())).reshape(1, -1)
-    # prediction = model.predict(features)
-    # prediction_proba = model.predict_proba(features)
+    features = np.array(list(received.values())).reshape(1, -1)
+    prediction = model.predict(features)
+    prediction_proba = model.predict_proba(features)
 
     prediction_text = "some text"
-    # prediction_text = f"The flower species is {prediction}, with probability {prediction_proba}"
+    prediction_text = f"The flower species is {prediction}, with probability {prediction_proba}"
     
-    return prediction_text
+    return {
+        "prediction": prediction[0],
+        "pred probablity": prediction_proba[0][0]
+        # "text": prediction_text
+    }
+
 
 
 
