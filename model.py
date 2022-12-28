@@ -52,3 +52,5 @@ print('Gradient Boosting score: ', clf3.score(X_test, y_test))
 # multiclass
 # print('RandomForest auc roc score: ', roc_auc_score(y_test, classifier.predict(X_test)) )
 # print('Logistic Regression auc roc score: ', roc_auc_score(y_test, clf2.predict(X_test)))
+# 
+# check pickle info 28 dec 2022
